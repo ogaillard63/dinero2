@@ -1,0 +1,99 @@
+<script src="{$tpl}/assets/js/jquery.cookie.js"></script>
+<script>
+// clear Bootstrap Modal content after close.
+ $('body').on('hidden.bs.modal', '.modal', function () {
+        $(this).removeData('bs.modal');
+      });
+
+</script>
+<div class="row">
+<div class="col-md-12">
+   <div class="panel panel-default">
+      <div class="panel-heading">
+         <h3 class="panel-title">{#list#|ucfirst} {#of_#} {#transactions#}</h3>
+            <div class="actions pull-right">
+           <select name="account" id="account_select">
+               <!--<option value="0">Tous les comptes</option>-->
+               {foreach from=$accounts item=account}
+               <option value="{$account->id}"{if $account_id == $account->id} selected="selected"{/if}>{$account->bank->name} - {$account->name}</option>
+               {/foreach}
+            </select>
+         </div>
+      </div>
+      <div class="panel-body">
+       <div style="font-size: 18px;border-bottom: 2px solid #DDD;margin:0; padding:3px 6px; font-weight: bold; background-color: #EDEDED">Solde au {$last_date|date_format:"%d/%m/%Y"}  <span class="pull-right">{$balance|number_format:2:",":" "} &euro;</span></div>
+         {if not empty($transactions)}
+         <table class="table table-hover table-striped">
+            <thead>
+               <tr>
+                  <th></th>
+                  <th>{#date#|ucfirst}</th>
+                  <th>{#transation_title#|ucfirst}</th>
+                  <th>{#comment#|ucfirst}</th>
+                  <th>{#amount#|ucfirst}</th>
+                  <!--<th>{#credit#|ucfirst}</th>-->
+                  <!--<th>{#category_id#|ucfirst}</th>-->
+                  <!--<th>{#import#|ucfirst}</th>-->
+                  <!--<th colspan="2">{#actions#|ucfirst}</th>-->
+               </tr>
+            </thead>
+            <tbody>
+               {foreach from=$transactions item=transaction}
+               <tr>
+               <td align="center" width="1%"{if $transaction->import} style="background-color: #fcfcea;"{/if}><a href="transactions.php?action=check&id={$transaction->id}&page={$page}">{if $transaction->state}<i class="fa fa-check-square-o"></i>{else}<i class="fa fa-square-o"></i>{/if}</a></td>
+               <td align="center" width="1%">{$transaction->date|date_format:"%d/%m/%Y"}</td>
+               <td align="left" width="43%">{if not $transaction->state}<a data-toggle="modal" href="transactions.php?action=edit&id={$transaction->id}&page={$page}" data-target="#editModal" title="{#edit#|ucfirst} {#this#} {#transaction#}">{$transaction->title|truncate:40}</a>{else}{$transaction->title|truncate:40}{/if}</td>
+               <td align="left" width="43%">{$transaction->comment|truncate:40}</td>
+
+               <td nowrap="nowrap" width="2%" align="right" class="{if $transaction->internal == 1}internal{else}{if $transaction->amount < 0}negative{else}positive{/if}{/if}">{$transaction->amount|number_format:2:",":" "} &euro;</td>
+               <!--{if $transaction->amount < 0}<td nowrap="nowrap" width="1%" align="right" class="negative">{$transaction->amount} &euro;</td width="1%"><td></td>{else}<td width="1%"></td><td nowrap="nowrap" width="1%" align="right" class="positive">{$transaction->amount} &euro;</td>{/if}-->
+               <!--<td align="left">{$transaction->category_id}</td>-->
+               <!--<td align="left">{$transaction->import}</td>-->
+               <!--<td width="1%" align="center" nowrap="nowrap"><a class="btn btn-sm btn-success" href="transactions.php?action=edit&id={$transaction->id}" title="{#edit#|ucfirst} {#this#} {#transaction#}">{#edit#|ucfirst}</a></td>
+                  <td width="1%" align="center" nowrap="nowrap"><a class="btn btn-sm btn-danger" href="transactions.php?action=delete&id={$transaction->id}" title="{#delete#|ucfirst} {#this#} {#transaction#}"onclick="return confirm('{#do_you_really_want_to#|ucfirst} {#delete#} {#this#} {#transaction#} ?')">{#delete#|ucfirst}</a></td>-->
+               </tr>
+               {/foreach}
+            </tbody>
+         </table>
+        
+         {else}
+         <h4>{#empty_list#}</h4>
+         {/if}
+         <div class="form-group">
+             <div class="col-md-6">
+               <ul class="pagination">
+               {if not empty($btn_nav)} {foreach from=$btn_nav item=btn}
+               <li{if $btn.active} class="active" {/if}><a href="transactions.php?{$btn.link}">{$btn.label}</a>
+               </li>
+               {/foreach}{/if}
+               </ul>
+             </div>
+            <div class="col-md-6">
+       				<a data-toggle="modal" href="transactions.php?action=add" class="btn btn-primary pull-right" data-target="#editModal">{#add#|ucfirst} {#a_#} {#transaction#}</a><a href="transactions.php?action=import_cancel" class="btn btn-danger pull-right btn-margin-right">{#cancel_import#}</a><a data-toggle="modal" href="transactions.php?action=import" class="btn btn-success pull-right btn-margin-right" data-target="#importModal">{#import#}</a>
+              <a href="transactions.php?action=search&account_id{$account_id}=" class="btn btn-warning pull-right btn-margin-right">{#search#|ucfirst}</a></div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="editModal" role="dialog">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      </div>
+   </div>
+</div>
+<!-- Wide Modal -->
+<div class="modal fade" id="importModal" role="dialog">
+   <div class="modal-dialog wide-modal" role="document">
+      <div class="modal-content">
+      </div>
+   </div>
+</div>
+<script type="text/javascript">
+   $( "#account_select" ).change( function() {
+   //$.cookie("account_select", $(this).val());
+   //var cookieValue = $.cookie("account_select");
+   //console.log(cookieValue);
+   location.href = "transactions.php?account_id=" + $(this).val();
+});
+</script>

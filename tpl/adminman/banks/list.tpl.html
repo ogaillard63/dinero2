@@ -1,0 +1,36 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">{#list#|ucfirst} {#of_#} {#banks#}</h3>
+				<div class="actions pull-right">
+					<i class="fa fa-chevron-down"></i>
+					<i class="fa fa-times"></i>
+				</div>
+			</div>
+			<div class="panel-body">
+				{if not empty($banks)}<table class="table table-hover table-striped">
+				<thead>
+					<tr>
+						<th>{#name#|ucfirst}</th>
+						<th colspan="2">{#actions#|ucfirst}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{foreach from=$banks item=bank}
+					<tr class="{cycle values="odd,even"}">
+					<td align="left">{$bank->name}</td>
+						<td width="1%" align="center" nowrap="nowrap"><a class="btn btn-xs btn-success" href="banks.php?action=edit&id={$bank->id}" title="{#edit#|ucfirst} {#this#} {#bank#}">{#edit#|ucfirst}</a></td>
+						<td width="1%" align="center" nowrap="nowrap"><a class="btn btn-xs btn-danger" href="banks.php?action=delete&id={$bank->id}" title="{#delete#|ucfirst} {#this#} {#bank#}"onclick="return confirm('{#do_you_really_want_to#|ucfirst} {#delete#} {#this#} {#bank#} ?')">{#delete#|ucfirst}</a></td>
+					</tr>
+					{/foreach}
+				</tbody>
+			</table>
+			{else}<h4>{#empty_list#}</h4>{/if}
+			<div align="right">
+				<a href="banks.php?action=add" class="btn btn-sm btn-primary">{#add#|ucfirst} {#a#} {#bank#}</a>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

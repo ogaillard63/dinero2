@@ -1,0 +1,59 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">{#modification#|ucfirst} {#of#} {#transactions#}</h3>
+				<div class="actions pull-right">
+					<i class="fa fa-chevron-down"></i>
+					<i class="fa fa-times"></i>
+				</div>
+			</div>
+			<div class="panel-body">
+				<form role="form" name="form_param" method="post" action="transactions.php">
+					<input name="id" type="hidden" value="{$transaction->id}" />
+					<input name="action" type="hidden" value="save" />
+					<div class="form-group">
+						<label for="{#account_id#}">{#account_id#|ucfirst}</label>
+						<input class="form-control" type="text" name="account_id" value="{$transaction->account_id}" />
+					</div>
+					<div class="form-group">
+						<label for="{#date#}">{#date#|ucfirst}</label>
+						<input class="form-control" type="text" name="date" value="{$transaction->date}" />
+					</div>
+					<div class="form-group">
+						<label for="{#title#}">{#transation_title#|ucfirst}</label>
+						<input class="form-control" type="text" name="title" value="{$transaction->title}" />
+					</div>
+					<div class="form-group">
+						<label for="{#amount#}">{#amount#|ucfirst}</label>
+						<input class="form-control" type="text" name="amount" value="{$transaction->amount}" />
+					</div>
+					<div class="form-group">
+						<label for="{#category_id#}">{#category_id#|ucfirst}</label>
+						<input class="form-control" type="text" name="category_id" value="{$transaction->category_id}" />
+					</div>
+					<div class="form-group">
+						<label for="{#comment#}">{#comment#|ucfirst}</label>
+						<input class="form-control" type="text" name="comment" value="{$transaction->comment}" />
+					</div>
+					<div class="form-group">
+						<label for="{#state#}">{#state#|ucfirst}</label>
+						<input class="form-control" type="text" name="state" value="{$transaction->state}" />
+					</div>
+					<div class="form-group">
+						<label for="{#import#}">{#import#|ucfirst}</label>
+						<input class="form-control" type="text" name="import" value="{$transaction->import}" />
+					</div>
+					<div class="form-group">
+						<label for="{#last_mod#}">{#last_mod#|ucfirst}</label>
+						<input class="form-control" type="text" name="last_mod" value="{$transaction->last_mod}" />
+					</div>
+					<div align="right">
+						<button type="cancel" class="btn btn-default">{#cancel#|ucfirst}</button>
+						<button type="submit" class="btn btn-primary">{#save#|ucfirst}</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

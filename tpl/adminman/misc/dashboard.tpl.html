@@ -1,0 +1,221 @@
+<div class="row">
+	<div class="col-md-3 col-sm-6">
+		<div class="dashboard-tile detail tile-turquoise">
+			<div class="content">
+				<h1 class="text-left timer" data-from="0" data-to="180" data-speed="2500">{$monthly_income|number_format:2:",":" "} &euro;</h1>
+				<p>Revenus du mois
+			</div>
+			<div class="icon"><i class="fa fa-bar-chart-o"></i>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 col-sm-6">
+		<div class="dashboard-tile detail tile-red">
+			<div class="content">
+				<h1 class="text-left timer" data-to="105" data-speed="2500">{$monthly_expense|number_format:2:",":" "} &euro;</h1>
+				<p>Dépenses du mois
+			</div>
+			<div class="icon"><i class="fa fa-bar-chart-o"></i>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 col-sm-6">
+		<div class="dashboard-tile detail tile-purple">
+		<div class="content">
+			<h1 class="text-left timer" data-from="0" data-to="56" data-speed="2500">{$uncategorized_transactions}</h1>
+			<p>Opérations non catégorisées</p>
+		</div>
+		<div class="icon"><i class="fa fa-envelope"></i>
+		</div>
+	</div>
+	</div>
+	<div class="col-md-3 col-sm-6">
+		<div class="dashboard-tile detail tile-blue">
+			<div class="content">
+				<h1 class="text-left timer" data-from="0" data-to="38" data-speed="2500">{$unreconciled_transactions}</h1>
+				<p>Opérations non pointées</p>
+			</div>
+			<div class="icon"><i class="fa fa fa-envelope"></i>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Panorama des comptes</h3>
+			</div>
+			<div class="panel-body">
+				<table class="table table-slim table-striped table-hover">
+				<tbody>{$cumul=0}
+					{foreach from=$accounts item=account}<tr>
+						<td><a href="transactions.php?account_id={$account->id}">{$account->bank->name} - {$account->name}</a></td>
+						<td align="right"><strong>{$account->current_balance|number_format:2:",":" "} &euro;</strong></td>
+					</tr>{$cumul = $cumul + $account->current_balance}					
+				{/foreach}
+				</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="dashboard-tile detail tile-blue">
+			<div class="content">
+				<h1 class="text-left timer" data-from="0" data-to="38" data-speed="2500">{$cumul|number_format:0:",":" "} &euro;</h1>
+				<p>Solde global</p>
+			</div>
+			<div class="icon"><i class="fa fa-bar-chart-o"></i>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Evolution du solde</h3>
+			</div>
+			<div class="panel-body">
+				<div id="placeholder" style="height: 310px; padding: 0px; position: relative;">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--<div class="row">
+	<div class="col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Répartition</h3>
+				<div class="actions pull-right">
+					<i class="fa fa-chevron-down"></i>
+					<i class="fa fa-times"></i>
+				</div>
+			</div>
+			<div class="panel-body">
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">xxx</h3>
+				<div class="actions pull-right">
+					<i class="fa fa-chevron-down"></i>
+					<i class="fa fa-times"></i>
+				</div>
+			</div>
+			<div class="panel-body">
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">xxx</h3>
+				<div class="actions pull-right">
+					<i class="fa fa-chevron-down"></i>
+					<i class="fa fa-times"></i>
+				</div>
+			</div>
+			<div class="panel-body">
+			</div>
+		</div>
+	</div>
+</div>-->
+ <!-- FlotCharts  -->
+<script src="{$tpl}/assets/plugins/flot/js/jquery.flot.min.js"></script>
+<script src="{$tpl}/assets/plugins/flot/js/jquery.flot.time.js"></script>
+<script src="{$tpl}/assets/plugins/flot/js/jquery.flot.resize.js"></script>
+<!--<script src="assets/plugins/flot/js/jquery.flot.canvas.min.js"></script>
+<script src="assets/plugins/flot/js/jquery.flot.image.min.js"></script>
+<script src="assets/plugins/flot/js/jquery.flot.categories.min.js"></script>
+<script src="assets/plugins/flot/js/jquery.flot.crosshair.min.js"></script>
+<script src="assets/plugins/flot/js/jquery.flot.errorbars.min.js"></script>
+<script src="assets/plugins/flot/js/jquery.flot.fillbetween.min.js"></script>
+<script src="assets/plugins/flot/js/jquery.flot.navigate.min.js"></script>
+<script src="assets/plugins/flot/js/jquery.flot.pie.min.js"></script>
+<script src="assets/plugins/flot/js/jquery.flot.selection.min.js"></script>
+<script src="assets/plugins/flot/js/jquery.flot.stack.min.js"></script>
+<script src="assets/plugins/flot/js/jquery.flot.symbol.min.js"></script>
+<script src="assets/plugins/flot/js/jquery.flot.threshold.min.js"></script>
+<script src="assets/plugins/flot/js/jquery.colorhelpers.min.js"></script>-->
+{literal}
+<script type="text/javascript">
+ var previousPoint = null, previousLabel = null;
+ function gd(year, month, day) {
+            return new Date(year, month, day).getTime();
+        }
+{/literal}var data = {$dataset};{literal} 
+
+$(function () {
+   
+     var options = {
+		series: {
+			lines: { show: true, lineWidth: 3},
+			points: { radius: 4,  fill: true, show: true }
+			},
+        xaxis: {
+	        mode: "time",
+	        tickSize: [1, "month"],
+	        autoscaleMargin: 0.02      
+		    },
+		legend: {
+        	labelBoxBorderColor: "#000000",
+        	position: "nw"
+    		},
+		 yaxis: {
+	        autoscaleMargin: 0.02      
+		    },
+	    grid: {
+	        hoverable: true, borderWidth: 1, borderColor: "#ccc",
+	        backgroundColor: { colors: ["#ffffff", "#ffffff"] },
+	    },
+	    
+	    colors: ["#3598db"]
+  	};
+	
+    var placeholder = $("#placeholder");
+    var plot = $.plot(placeholder, [ data ], options); 
+    placeholder.UseTooltip();
+   
+});
+
+$.fn.UseTooltip = function () {
+    $(this).bind("plothover", function (event, pos, item) {
+        if (item) {
+            if ((previousLabel != item.series.label) || (previousPoint != item.dataIndex)) {
+                previousPoint = item.dataIndex;
+                previousLabel = item.series.label;
+                $("#tooltip").remove();
+
+                var x = item.datapoint[0];
+                var y = item.datapoint[1];
+
+                var color = item.series.color;
+                var month = new Date(x).getMonth();
+                showTooltip(item.pageX,
+                            item.pageY,
+                            color,
+                            "<strong>" + y + " k&euro;</strong> ");
+            }
+        } else {
+            $("#tooltip").remove();
+            previousPoint = null;
+        }
+    });
+};
+
+function showTooltip(x, y, color, contents) {
+    $('<div id="tooltip">' + contents + '</div>').css({
+        position: 'absolute',
+        display: 'none',
+        top: y - 30,
+        left: x - 60,
+        background: '#ededed',
+        border: '1px solid #ddd',
+        padding: '1px 4px',
+        opacity: 0.9
+    }).appendTo("body").fadeIn(200);
+}
+
+
+
+</script>{/literal}

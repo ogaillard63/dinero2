@@ -1,0 +1,22 @@
+<aside class="sidebar">
+    <div id="leftside-navigation" class="nano">
+        <ul class="nano-content">
+            <li{if $page_title=="Dashboard" } class="active" {/if}>
+                <a href="index.php"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
+                </li>
+                <li{if $page_title=="Transactions" } class="active" {/if}>
+                    <a href="transactions.php"><i class="fa fa-table"></i><span>{#transactions#|ucfirst}</span></a>
+                    </li>
+                    <li class="sub-menu{if $page_title == " Banques " || $page_title == "Comptes " || $page_title == "Categories
+                        " || $page_title == "Utilisateurs "} active{/if}">
+                        <a href="javascript:void(0);"><i class="fa fa-gear"></i><span>Configuration</span><i class="arrow fa fa-angle-right pull-right"></i></a>
+                        <ul>
+                            <li{if $page_title=="Banques" } class="active" {/if}><a href="banks.php"><i class="arrow fa fa-angle-right"></i>{#banks#|ucfirst}</a></li>
+                                <li{if $page_title=="Comptes" } class="active" {/if}><a href="accounts.php"><i class="arrow fa fa-angle-right"></i>{#accounts#|ucfirst}</a></li>
+                                    <li{if $page_title=="Categories" } class="active" {/if}><a href="categories.php"><i class="arrow fa fa-angle-right"></i>{#categories#|ucfirst}</a></li>
+                                        <li{if $page_title=="Utilisateurs" } class="active" {/if}><a href="users.php"><i class="arrow fa fa-angle-right"></i>{#users#|ucfirst}</a></li>
+                        </ul>
+                        </li>
+        </ul>
+    </div>
+</aside>

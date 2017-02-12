@@ -1,0 +1,80 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">{#search#|ucfirst}</h3>
+				<div class="actions pull-right">
+			<select name="account" id="account_select">
+				<!--<option value="0">Tous les comptes</option>-->
+				{foreach from=$accounts item=account}
+				<option value="{$account->id}"{if $account_id == $account->id} selected="selected"{/if}>{$account->bank->name} - {$account->name}</option>
+				{/foreach}
+				</select>
+			</div>
+			</div>
+			<div class="panel-body">
+				<form role="form" name="form_param" method="post" action="transactions.php" class="search_form">
+					<div class="input-group">
+						<input class="form-control" type="hidden" name="action" value="search_results" />
+						<input class="form-control" type="text" name="query" value="{if not empty($query)}{$query}{/if}" />
+						<span class="input-group-btn">
+							<button type="submit" class="btn btn-primary">{#search#|ucfirst}</button>
+						</span>
+					</div>
+				</form>
+			</div>
+		</div>
+		{if not empty($transactions)}
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">{#search_results#|ucfirst}</h3>
+				</div>
+			<div class="panel-body">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>{#date#|ucfirst}</th>
+							<th>{#title#|ucfirst}</th>
+							<th>{#comment#|ucfirst}</th>
+							<th>{#amount#|ucfirst}</th>
+						</tr>
+					</thead>
+					<tbody>{$sum=0}
+						{foreach from=$transactions item=transaction}
+						<tr>
+							<td align="center">{$transaction->date|date_format:"%d/%m/%Y"}</td>
+							<td align="left">
+								<a data-toggle="modal" href="transactions.php?action=edit&id={$transaction->id}&query={$query}" data-target="#editModal"
+									title="{#edit#|ucfirst} {#this#} {#transaction#}">{$transaction->title|replace:"{$query}":"<strong>{$query}</strong>"}</a>
+							</td>
+							<td align="left">{$transaction->comment|replace:"{$query}":"<strong>{$query}</strong>"}</td>
+							<td align="right">{$transaction->amount|number_format:2:",":" "} &euro;</td>
+						</tr>{$sum = $sum + $transaction->amount}
+						{/foreach}
+						<tr>
+							<td colspan="3">{#cumul#|ucfirst}</td>
+							<td align="right"><strong>{$sum|number_format:2:",":" "} &euro;</strong></td>
+						</tr>
+					</tbody>
+				</table>
+				<ul class="pagination pull-left">
+					{if not empty($btn_nav)} {foreach from=$btn_nav item=btn}
+					<li{if $btn.active} class="active" {/if}><a href="transactions.php?{$btn.link}">{$btn.label}</a></li>
+						{/foreach}{/if}
+				</ul>
+			</div>
+		</div>{/if}
+	</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="editModal" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+   $( "#account_select" ).change( function() {
+   location.href = "transactions.php?action=search&account_id=" + $(this).val();
+});
+</script>

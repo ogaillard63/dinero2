@@ -1,0 +1,71 @@
+# labels
+country = country
+countries = countries
+place = place
+places = places
+route = route
+routes = routes
+photo = photo
+photos = photos
+identification = identification
+user = user
+users = users
+post = post
+posts = posts
+importation = importation
+
+# fields
+name = name
+firstname = firstname
+login = login
+password = password
+email = email
+profil = profil
+expiration_date = expiration
+last_cnx = dernière cnx
+gps_lat = latitude
+gps_lon = longitude
+caption = caption
+modification = modification
+title = title
+text = text
+description = description
+debit = débit
+credit = credit
+inactive = inactive
+active = active
+
+#messages
+empty_list = empty list !
+do_you_really_want_to = do you really want to
+please_wait = please wait ...
+hello = hello
+the_post_has_been_saved = The post has been saved.
+the_post_has_been_deleted = The post has been deleted !
+the_country_has_been_saved = The country has been_saved.
+the_country_has_been_deleted = The country has been_deleted !
+the_place_has_been_saved = The place has been saved.
+the_place_has_been_deleted = The place has been deleted !
+the_route_has_been_saved = The route has been saved.
+the_route_has_been_deleted = The route has been deleted !
+the_photo_has_been_saved = The photo has been saved.
+the_photo_has_been_deleted = The photo has been deleted !
+the_user_has_been_saved = The user has been saved.
+the_user_has_been_deleted = The user has been deleted !
+
+# buttons
+edit = edit
+delete = delete
+save = save
+exit = exit
+connection = connection
+import = import
+
+# misc
+list = list
+of = of
+of_ = of
+add = add
+a = a
+a_ = a
+this = ce

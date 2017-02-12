@@ -1,0 +1,52 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">{#list#|ucfirst} {#of_#} {#categories#}</h3>
+				<div class="actions pull-right">
+					<i class="fa fa-chevron-down"></i>
+					<i class="fa fa-times"></i>
+				</div>
+			</div>
+			<div class="panel-body">
+				{if not empty($categories)}<table class="table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<th width="1%" align="center">{#parent_id#|ucfirst}</th>
+						<th>{#name#|ucfirst}</th>
+						<th width="1%">{#state#|ucfirst}</th>
+						<th colspan="2">{#actions#|ucfirst}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{foreach from=$categories item=category}
+					<tr>
+						<td align="left"><i class="fa fa-folder-o"></i></td>
+						<td align="left" colspan="4"><strong>{$category->name}</strong></td>
+					</tr>
+						{foreach from=$category->sub_categories item=sub}
+						<tr>
+							<td align="left"></td>
+							<td align="left">{$sub->name}</td>
+							<td width="1%" align="center">{if $sub->active_flag}<i class="fa fa-2x fa-toggle-on"></i>{else}<i class="fa fa-2x fa-toggle-off"></i>{/if}</td>
+							<td width="1%" align="center" nowrap="nowrap"><a class="btn btn-xs btn-success" href="categories.php?action=edit&id={$sub->id}" title="{#edit#|ucfirst} {#this#} {#category#}">{#edit#|ucfirst}</a></td>
+							<td width="1%" align="center" nowrap="nowrap"><a class="btn btn-xs btn-danger" href="categories.php?action=delete&id={$sub->id}" title="{#delete#|ucfirst} {#this#} {#category#}"onclick="return confirm('{#do_you_really_want_to#|ucfirst} {#delete#} {#this#} {#category#} ?')">{#delete#|ucfirst}</a></td>
+						</tr>
+						{/foreach}
+					{/foreach}
+				</tbody>
+			</table>
+			<ul class="pagination pull-left">
+				{if not empty($btn_nav)} {foreach from=$btn_nav item=btn}
+				<li{if $btn.active} class="active" {/if}><a href="categories.php?{$btn.link}">{$btn.label}</a>
+					</li>
+					{/foreach}{/if}
+			</ul>
+			{else}<h4>{#empty_list#}</h4>{/if}
+			<div align="right">
+				<a href="categories.php?action=add" class="btn btn-sm btn-primary">{#add#|ucfirst} {#a_#} {#category#}</a>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
