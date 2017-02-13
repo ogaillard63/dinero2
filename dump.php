@@ -1,4 +1,10 @@
 <?php
+/**
+* @project		Dinero
+* @author		Olivier Gaillard
+* @version		1.0 du 11/12/2014
+* @desc			Dump de la base de données
+*/
 
 $path =  realpath(dirname (__FILE__)).'/inc/properties';
 $properties_filepath = $path."/". $_SERVER["HTTP_HOST"].'/properties.ini';
