@@ -1,0 +1,148 @@
+/* Customm CSS */
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* logo */
+.logo img {
+    width: 180px;
+    margin-top: -10px;
+}
+
+/* navbar */
+.navbar-default {
+    background-color: #3497da;
+    border-color: #E7E7E7;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #E7E7E7;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #333;
+}
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #555;
+    background-color: #E7E7E7;
+}
+/* buttons */
+.btn-group a.btn {
+    margin-right: 5px;
+}
+select {
+     padding: 0 5px;
+     margin: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+}
+/* pagination */
+.pagination {
+    margin: 0;
+}
+
+/* tiles */
+.dashboard-tile {
+  background-color: #555;
+  color: #fff;
+  margin-bottom: 15px;
+  padding: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.dashboard-tile .header {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+.dashboard-tile .header .title {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 5px;
+  position: absolute;
+  text-transform: uppercase;
+  top: 7px;
+}
+.dashboard-tile .content {
+  padding: 10px;
+}
+.dashboard-tile.header .content {
+  background: transparent;
+  padding-right: 10px;
+  display: inline-block;
+  position: relative;
+  z-index: 5;
+}
+.dashboard-tile .content h1 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 32px;
+  padding: 8px;
+}
+.dashboard-tile .content p {
+  margin-bottom: 0;
+  padding: 10px;
+  font-size: 14px;
+  clear: both;
+}
+.dashboard-tile.detail .icon {
+  position: absolute;
+  display: block;
+  float: right;
+  height: 80px;
+  margin-bottom: 10px;
+  padding-left: 15px;
+  padding-top: 10px;
+  width: 80px;
+  right: 50px;
+  bottom: 9px;
+}
+.dashboard-tile.detail .icon i {
+  color: rgba(0, 0, 0, 0.1);
+  font-size: 75px;
+  line-height: 55px;
+}
+
+/* table */
+.table td.amount {
+  font-weight: bold;
+}
+.table td.positive {
+  color: #33ce33;
+}
+.table td.negative {
+  color: #ce3333;
+}
+.table td.internal {
+  color: #1f4a77;
+}
+/* modals */
+@media screen and (min-width: 768px) {
+    .wide-modal {
+        width: 70%; /* either % (e.g. 60%) or px (400px) */
+    }
+}
+
+/* colors */
+.bg-turquoise {
+    background-color: #1abc9c;
+}
+.bg-red {
+    background-color: #e84c3d;
+}
+.bg-blue {
+    background-color: #1f4a77;
+}
+.bg-purple {
+    background-color: #9a59b5;
+}

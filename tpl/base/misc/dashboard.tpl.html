@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-3 col-sm-6">
-		<div class="dashboard-tile detail tile-turquoise">
+		<div class="dashboard-tile detail bg-turquoise">
 			<div class="content">
 				<h1 class="text-left timer" data-from="0" data-to="180" data-speed="2500">{$monthly_income|number_format:2:",":" "} &euro;</h1>
 				<p>Revenus du mois
@@ -10,7 +10,7 @@
 		</div>
 	</div>
 	<div class="col-md-3 col-sm-6">
-		<div class="dashboard-tile detail tile-red">
+		<div class="dashboard-tile detail bg-red">
 			<div class="content">
 				<h1 class="text-left timer" data-to="105" data-speed="2500">{$monthly_expense|number_format:2:",":" "} &euro;</h1>
 				<p>Dépenses du mois
@@ -20,7 +20,7 @@
 		</div>
 	</div>
 	<div class="col-md-3 col-sm-6">
-		<div class="dashboard-tile detail tile-purple">
+		<div class="dashboard-tile detail bg-purple">
 		<div class="content">
 			<h1 class="text-left timer" data-from="0" data-to="56" data-speed="2500">{$uncategorized_transactions}</h1>
 			<p>Opérations non catégorisées</p>
@@ -30,7 +30,7 @@
 	</div>
 	</div>
 	<div class="col-md-3 col-sm-6">
-		<div class="dashboard-tile detail tile-blue">
+		<div class="dashboard-tile detail bg-blue">
 			<div class="content">
 				<h1 class="text-left timer" data-from="0" data-to="38" data-speed="2500">{$unreconciled_transactions}</h1>
 				<p>Opérations non pointées</p>
@@ -51,14 +51,14 @@
 				<tbody>{$cumul=0}
 					{foreach from=$accounts item=account}<tr>
 						<td><a href="transactions.php?account_id={$account->id}">{$account->bank->name} - {$account->name}</a></td>
-						<td align="right"><strong>{$account->current_balance|number_format:2:",":" "} &euro;</strong></td>
+						<td align="right" class="amount">{$account->current_balance|number_format:2:",":" "} &euro;</td>
 					</tr>{$cumul = $cumul + $account->current_balance}					
 				{/foreach}
 				</tbody>
 				</table>
 			</div>
 		</div>
-		<div class="dashboard-tile detail tile-blue">
+		<div class="dashboard-tile detail bg-blue">
 			<div class="content">
 				<h1 class="text-left timer" data-from="0" data-to="38" data-speed="2500">{$cumul|number_format:0:",":" "} &euro;</h1>
 				<p>Solde global</p>
