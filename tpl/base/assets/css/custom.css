@@ -30,7 +30,7 @@ body {
     color: #555;
     background-color: #E7E7E7;
 }
-/* buttons */
+/* buttons, select, dropdown */
 .btn-group a.btn {
     margin-right: 5px;
 }
@@ -42,6 +42,9 @@ select {
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
     border-radius: 3px;
+}
+.dropdown-menu {
+    min-width: 100px;
 }
 /* pagination */
 .pagination {
@@ -126,6 +129,15 @@ select {
 .table td.internal {
   color: #1f4a77;
 }
+.balance {
+  font-size: 18px;
+  border-bottom: 2px solid #DDD;
+  margin:0; 
+  padding:3px 6px; 
+  font-weight: bold; 
+  background-color: #EDEDED;
+}
+
 /* modals */
 @media screen and (min-width: 768px) {
     .wide-modal {

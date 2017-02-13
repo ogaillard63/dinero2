@@ -3,10 +3,6 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">{#list#|ucfirst} {#of_#} {#accounts#}</h3>
-				<div class="actions pull-right">
-					<i class="fa fa-chevron-down"></i>
-					<i class="fa fa-times"></i>
-				</div>
 			</div>
 			<div class="panel-body">
 				{if not empty($accounts)}<table class="table table-hover table-striped">
@@ -36,7 +32,7 @@
 							<td width="1%" align="center">{if $account->state}<i class="fa fa-toggle-on fa-2x"></i>{else}<i class="fa fa-toggle-off fa-2x"></i>{/if}</td>
 							<td width="1%" align="center" nowrap="nowrap"><a class="btn btn-xs btn-success" href="accounts.php?action=edit&id={$account->id}" title="{#edit#|ucfirst} {#this#} {#account#}">{#edit#|ucfirst}</a></td>
 							<td width="1%" align="center" nowrap="nowrap"><a class="btn btn-xs btn-danger" href="accounts.php?action=delete&id={$account->id}" title="{#delete#|ucfirst} {#this#} {#account#}"onclick="return confirm('{#do_you_really_want_to#|ucfirst} {#delete#} {#this#} {#account#} ?')">{#delete#|ucfirst}</a></td>
-							<td width="1%" align="center" nowrap="nowrap"><a class="btn btn-xs btn-danger" href="accounts.php?action=delete_transactions&id={$account->id}" title="{#delete#|ucfirst} {#all_transactions#}"onclick="return confirm('{#do_you_really_want_to#|ucfirst} {#delete#} {#all_transactions#} ?')">{#empty#|ucfirst}</a></td>
+							<!--<td width="1%" align="center" nowrap="nowrap"><a class="btn btn-xs btn-warning" href="accounts.php?action=delete_transactions&id={$account->id}" title="{#delete#|ucfirst} {#all_transactions#}"onclick="return confirm('{#do_you_really_want_to#|ucfirst} {#delete#} {#all_transactions#} ?')">{#empty#|ucfirst}</a></td>-->
 						</tr>
 						{/foreach}
 					</tbody>
@@ -49,7 +45,7 @@
 				</ul>
 				{else}<h4>{#empty_list#}</h4>{/if}
 				<div align="right">
-					<a href="accounts.php?action=add" class="btn btn-sm btn-primary">{#add#|ucfirst} {#a#} {#account#}</a>
+					<a href="accounts.php?action=add" class="btn btn-sm btn-primary">{#add#|ucfirst} {#a_account#}</a>
 				</div>
 			</div>
 		</div>

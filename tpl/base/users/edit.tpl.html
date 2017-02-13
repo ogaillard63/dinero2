@@ -40,7 +40,8 @@
 						<input class="form-control datepicker" type="text" name="expiration" value="{$user->expiration|date_format:"%d/%m/%Y"}" />
 					</div>
 				   <div align="right">
-						<input type="submit" value="{#save#|capitalize}" class="btn btn-success" />
+						<!--<button type="cancel" class="btn btn-default">{#cancel#|ucfirst}</button>-->
+						<button type="submit" class="btn btn-primary">{#save#|ucfirst}</button>
 				   </div>
 				</form>
 			</div>

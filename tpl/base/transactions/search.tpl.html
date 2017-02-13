@@ -2,15 +2,14 @@
 	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
+				<div class="pull-right">
+					<select name="account" id="account_select">
+					{foreach from=$accounts item=account}
+					<option value="{$account->id}"{if $account_id == $account->id} selected="selected"{/if}>{$account->bank->name} - {$account->name}</option>
+					{/foreach}
+					</select>
+				</div>
 				<h3 class="panel-title">{#search#|ucfirst}</h3>
-				<div class="actions pull-right">
-			<select name="account" id="account_select">
-				<!--<option value="0">Tous les comptes</option>-->
-				{foreach from=$accounts item=account}
-				<option value="{$account->id}"{if $account_id == $account->id} selected="selected"{/if}>{$account->bank->name} - {$account->name}</option>
-				{/foreach}
-				</select>
-			</div>
 			</div>
 			<div class="panel-body">
 				<form role="form" name="form_param" method="post" action="transactions.php" class="search_form">
@@ -28,7 +27,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">{#search_results#|ucfirst}</h3>
-				</div>
+			</div>
 			<div class="panel-body">
 				<table class="table table-bordered table-striped">
 					<thead>
@@ -39,8 +38,7 @@
 							<th>{#amount#|ucfirst}</th>
 						</tr>
 					</thead>
-					<tbody>{$sum=0}
-						{foreach from=$transactions item=transaction}
+					<tbody>{$sum=0} {foreach from=$transactions item=transaction}
 						<tr>
 							<td align="center">{$transaction->date|date_format:"%d/%m/%Y"}</td>
 							<td align="left">
@@ -48,12 +46,11 @@
 									title="{#edit#|ucfirst} {#this#} {#transaction#}">{$transaction->title|replace:"{$query}":"<strong>{$query}</strong>"}</a>
 							</td>
 							<td align="left">{$transaction->comment|replace:"{$query}":"<strong>{$query}</strong>"}</td>
-							<td align="right">{$transaction->amount|number_format:2:",":" "} &euro;</td>
-						</tr>{$sum = $sum + $transaction->amount}
-						{/foreach}
+							<td align="right" class="amount" nowrap="nowrap">{$transaction->amount|number_format:2:",":" "} &euro;</td>
+						</tr>{$sum = $sum + $transaction->amount} {/foreach}
 						<tr>
 							<td colspan="3">{#cumul#|ucfirst}</td>
-							<td align="right"><strong>{$sum|number_format:2:",":" "} &euro;</strong></td>
+							<td align="right" class="amount">{$sum|number_format:2:",":" "} &euro;</td>
 						</tr>
 					</tbody>
 				</table>
@@ -74,7 +71,8 @@
 	</div>
 </div>
 <script type="text/javascript">
-   $( "#account_select" ).change( function() {
-   location.href = "transactions.php?action=search&account_id=" + $(this).val();
-});
+	$("#account_select").change(function () {
+		location.href = "transactions.php?action=search&account_id=" + $(this).val();
+	});
+
 </script>

@@ -1,19 +1,20 @@
 <!-- Fixed navbar -->
-     <nav class="navbar navbar-default navbar-static-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand logo" href="index.php">
-            <img src="tpl/base/assets/img/brand-white.png" alt="brand">
-          </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+        aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand logo" href="index.php">
+          <img src="tpl/base/assets/img/brand-white.png" alt="brand">
+        </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <!--<ul class="nav navbar-nav">
             <li class="active"><a href="index.php">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -29,22 +30,23 @@
                 <li><a href="#">One more separated link</a></li>
               </ul>
             </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown settings">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          </ul>-->
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 					{$login_name} <i class="fa fa-angle-down"></i>
 				</a>
-				<ul class="dropdown-menu animated fadeInDown">
-					<li>
-						<a href="users.php"><i class="fa fa-user"></i> Profile</a>
-					</li>
-					<li>
-						<a href="identification.php?action=logout"><i class="fa fa-power-off"></i> Logout</a>
-					</li>
-				</ul>
-			</li>
+          <ul class="dropdown-menu">
+            <li><a href="banks.php"><i class="fa fa-bank"></i> {#banks#|ucfirst}</a></li>
+            <li><a href="accounts.php"><i class="fa fa-id-card"></i> {#accounts#|ucfirst}</a></li>
+            <li><a href="categories.php"><i class="fa fa-bars"></i> {#categories#|ucfirst}</a></li>
+            <li><a href="users.php"><i class="fa fa-users"></i> {#users#|ucfirst}</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="identification.php?action=logout"><i class="fa fa-power-off"></i> Logout</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+        </li>
+      </ul>
+    </div>
+    <!--/.nav-collapse -->
+  </div>
+</nav>

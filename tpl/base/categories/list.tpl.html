@@ -3,10 +3,6 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">{#list#|ucfirst} {#of_#} {#categories#}</h3>
-				<div class="actions pull-right">
-					<i class="fa fa-chevron-down"></i>
-					<i class="fa fa-times"></i>
-				</div>
 			</div>
 			<div class="panel-body">
 				{if not empty($categories)}<table class="table table-bordered table-striped table-hover">
@@ -44,7 +40,7 @@
 			</ul>
 			{else}<h4>{#empty_list#}</h4>{/if}
 			<div align="right">
-				<a href="categories.php?action=add" class="btn btn-sm btn-primary">{#add#|ucfirst} {#a_#} {#category#}</a>
+				<a href="categories.php?action=add" class="btn btn-sm btn-primary">{#add#|ucfirst} {#a_category#}</a>
 			</div>
 		</div>
 	</div>

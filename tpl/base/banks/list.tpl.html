@@ -3,10 +3,6 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">{#list#|ucfirst} {#of_#} {#banks#}</h3>
-				<div class="actions pull-right">
-					<i class="fa fa-chevron-down"></i>
-					<i class="fa fa-times"></i>
-				</div>
 			</div>
 			<div class="panel-body">
 				{if not empty($banks)}<table class="table table-hover table-striped">
@@ -28,7 +24,7 @@
 			</table>
 			{else}<h4>{#empty_list#}</h4>{/if}
 			<div align="right">
-				<a href="banks.php?action=add" class="btn btn-sm btn-primary">{#add#|ucfirst} {#a#} {#bank#}</a>
+				<a href="banks.php?action=add" class="btn btn-sm btn-primary">{#add#|ucfirst} {#a_bank#}</a>
 			</div>
 		</div>
 	</div>
