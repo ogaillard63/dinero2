@@ -1,44 +1,49 @@
 <div class="row">
-<div class="col-md-12">
-   <div class="panel panel-default">
-      <div class="panel-heading">
-         <h3 class="panel-title">{#list#|ucfirst} {#of_#} {#users#}</h3>
-				
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">{#list#|ucfirst} {#of_#} {#users#}</h3>
+
 			</div>
 			<div class="panel-body">
 
-				{if not empty($users)}<table class="table table-hover table-striped">
-				<thead>
-				<tr>
-					<th>{#name#|ucfirst}</th>
-					<th>{#firstname#|ucfirst}</th>
-					<th>{#login#|ucfirst}</th>
-					<th>{#email#|ucfirst}</th>
-					<th>{#profil_id#|ucfirst}</th>
-					<th>{#expiration#|ucfirst}</th>
-					<th>{#last_cnx#|ucfirst}</th>
-					<th colspan="2">{#actions#|ucfirst}</th>
-				</tr>
-				</thead>
-				<tbody>
-				{foreach from=$users item=user}
-				<tr>
-					<td align="left">{$user->name}</td>
-					<td align="left">{$user->firstname}</td>
-					<td align="left">{$user->login}</td>
-					<td align="left">{$user->email}</td>
-					<td align="left">{$user->profil_id}</td>
-					<td align="left">{$user->expiration|date_format:"%d/%m/%Y"}</td>
-					<td align="left">{$user->last_cnx|date_format:"%d/%m/%Y %H:%M"}</td>
-					<td width="1%" align="center" nowrap="nowrap"><a class="btn btn-xs btn-success" href="users.php?action=edit&id={$user->id}" title="{#edit#|ucfirst} {#this#} {#user#}">{#edit#|ucfirst}</a></td>
-					<td width="1%" align="center" nowrap="nowrap"><a class="btn btn-xs btn-danger" href="users.php?action=delete&id={$user->id}" title="{#delete#|ucfirst} {#this#} {#user#}"onclick="return confirm('{#do_you_really_want_to#|ucfirst} {#delete#} {#this#} {#user#} ?')">{#delete#|ucfirst}</a></td>
-				</tr>
-				{/foreach}
-				</tbody>
-			</table>
-				{else}<h4>{#empty_list#}</h4>{/if}
-				<div align="right">
-				<a href="users.php?action=add" class="btn btn-sm btn-primary">{#add#|ucfirst} {#a_user#}</a>
+				{if not empty($users)}
+				<table class="table table-hover table-striped">
+					<thead>
+						<tr>
+							<th>{#name#|ucfirst}</th>
+							<th>{#firstname#|ucfirst}</th>
+							<th>{#login#|ucfirst}</th>
+							<th>{#email#|ucfirst}</th>
+							<th>{#profil_id#|ucfirst}</th>
+							<th>{#expiration#|ucfirst}</th>
+							<th>{#last_cnx#|ucfirst}</th>
+							<th colspan="2">{#actions#|ucfirst}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{foreach from=$users item=user}
+						<tr>
+							<td align="left">{$user->name}</td>
+							<td align="left">{$user->firstname}</td>
+							<td align="left">{$user->login}</td>
+							<td align="left">{$user->email}</td>
+							<td align="left">{$user->profil_id}</td>
+							<td align="left">{$user->expiration|date_format:"%d/%m/%Y"}</td>
+							<td align="left">{$user->last_cnx|date_format:"%d/%m/%Y %H:%M"}</td>
+							<td width="1%" align="center" nowrap="nowrap"><a class="btn btn-xs btn-success" href="users.php?action=edit&id={$user->id}" title="{#edit#|ucfirst} {#this#} {#user#}">{#edit#|ucfirst}</a></td>
+							<td width="1%" align="center" nowrap="nowrap">
+								<a class="btn btn-xs btn-danger" href="users.php?action=delete&id={$user->id}" title="{#delete#|ucfirst} {#this#} {#user#}"
+									onclick="return confirm('{#do_you_really_want_to#|ucfirst} {#delete#} {#this#} {#user#} ?')">{#delete#|ucfirst}</a>
+							</td>
+						</tr>
+						{/foreach}
+					</tbody>
+				</table>
+				{else}
+				<h4>{#empty_list#}</h4>{/if}
+				<div class="panel-footer">
+					<a href="users.php?action=add" class="btn btn-sm btn-primary pull-right">{#add#|ucfirst} {#a_user#}</a>
 				</div>
 			</div>
 		</div>

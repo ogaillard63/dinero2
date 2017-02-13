@@ -137,7 +137,9 @@ select {
   font-weight: bold; 
   background-color: #EDEDED;
 }
-
+.panel-footer {
+     background-color: #FFF; 
+}    
 /* modals */
 @media screen and (min-width: 768px) {
     .wide-modal {
