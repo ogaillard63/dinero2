@@ -6,8 +6,6 @@
  * @desc	   	Accueil
  */
 
-// http://croisoft.com/projects/adminman/pages-login.html
-
 require_once( "inc/prepend.php" );
 $user->isLoggedIn(); // Espace privé
 $user->isAllowed(SUPER_ADMIN);
