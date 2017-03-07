@@ -6,8 +6,8 @@
 * @desc			Dump de la base de données
 */
 
-$path =  realpath(dirname (__FILE__)).'/inc/properties';
-$properties_filepath = $path."/". $_SERVER["HTTP_HOST"].'/properties.ini';
+$properties_filepath = realpath(dirname (__FILE__)).'/inc/properties/'.$_SERVER["HTTP_HOST"].'/properties.ini';
+if (!is_file($properties_filepath)) die("Unbale to find :  ".$properties_filepath);
 $prop = parse_ini_file($properties_filepath);
 
 backup_tables($prop['db_hostname'],$prop['db_username'],$prop['db_password'],$prop['db_name'], '*');
@@ -49,7 +49,7 @@ function backup_tables($host, $user, $pass, $name, $tables = '*') {
 				for($j=0; $j < $num_fields; $j++) 
 				{
 					$row[$j] = addslashes($row[$j]);
-					$row[$j] = ereg_replace("\n","\\n",$row[$j]);
+					$row[$j] = str_replace("\n","\\n",$row[$j]);
 					if (isset($row[$j])) { $return.= '"'.$row[$j].'"' ; } else { $return.= '""'; }
 					if ($j < ($num_fields-1)) { $return.= ','; }
 				}
@@ -58,7 +58,6 @@ function backup_tables($host, $user, $pass, $name, $tables = '*') {
 		}
 		$return.="\n\n\n";
 	}
-	
 	//save file
 	$filename = 'dumps/db-backup-'.time().'.sql';
     $handle = fopen($filename,'w+');
