@@ -5,6 +5,8 @@
 * @version		1.0 du 11/12/2014
 * @desc			Controleur des objets : categories
 */
+use App\Utils;
+use App\CategoryManager;
 
 require_once( "inc/prepend.php" );
 $user->isLoggedIn(); // Espace privé

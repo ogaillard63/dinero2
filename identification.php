@@ -8,6 +8,7 @@
  */
 
 require_once( "inc/prepend.php" );
+use App\Utils;
 
 // Récupération des variables
 $action			= Utils::get_input('action','both');

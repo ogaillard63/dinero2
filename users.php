@@ -5,6 +5,8 @@
 * @version		1.0 du 11/12/2014
 * @desc			Controleur des objets : utilisateurs
  */
+use App\Utils;
+use App\UsersManager;
 
 require_once( "inc/prepend.php" );
 $user->isLoggedIn(); // Espace privé

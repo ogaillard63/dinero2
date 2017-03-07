@@ -5,8 +5,15 @@
  * @version		1.0 du 04/06/2012
  * @desc	   	Initialisation des ressources
  */
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 0);
+//error_reporting(E_ALL);
+use App\Session;
+use App\Logger;
+use App\UserAuth;
+use App\Translator;
+
+// Autoload
+require 'vendor/autoload.php';
 
 setlocale(LC_ALL, 'fr_FR');
 date_default_timezone_set('Europe/Paris');
@@ -18,18 +25,6 @@ define('PATH_LANG',			PATH_APP.'/lang');
 define('PATH_PROPERTIES', 	PATH_INC.'/properties');
 define('PATH_CLASSES', 		PATH_INC.'/classes');
 define('PATH_SMARTY', 		PATH_INC.'/smarty');
-
-// autoloader de classes
-function autoloader($class) {
-	if (substr($class, 0, 7) == 'Smarty_') {
-		require_once PATH_SMARTY.DS.'sysplugins'.DS.strtolower($class).'.php';
-	}
-	else {
-		if ($class == 'Smarty') require_once PATH_SMARTY.DS.$class.'.class.php';
-		else require_once PATH_CLASSES.DS.lcfirst($class).'.class.php';
-	}
-}
-spl_autoload_register('autoloader');
 
 // Paramètres de l'application
 $properties_filepath = PATH_PROPERTIES.DS. $_SERVER["HTTP_HOST"].DS.'properties.ini';
@@ -54,8 +49,13 @@ $smarty->force_compile = false;
 $smarty->assign('tpl', PATH_TPL_RELATIVE);
 
 // Connexion à la base de données
-$bdd = new PDO("mysql:host=".$prop['db_hostname'].";port=".$prop['db_port'].";dbname=".$prop['db_name'].";charset=utf8", $prop['db_username'], $prop['db_password']);
-$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+try {
+	$bdd = new PDO("mysql:host=".$prop['db_hostname'].";port=".$prop['db_port'].";dbname=".$prop['db_name'].";charset=utf8", $prop['db_username'], $prop['db_password']);
+	$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	}
+catch( PDOException $Exception ) {
+    throw new MyDatabaseException( $Exception->getMessage( ) , $Exception->getCode( ) );
+}
 
 // Log
 $log = new Logger($bdd, $smarty, $session);

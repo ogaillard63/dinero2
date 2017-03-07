@@ -6,7 +6,11 @@
  * @desc	   	Accueil
  */
 
+use App\AccountManager;
+use App\TransactionManager;
+
 require_once( "inc/prepend.php" );
+
 $user->isLoggedIn(); // Espace privé
 $user->isAllowed(SUPER_ADMIN);
 

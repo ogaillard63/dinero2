@@ -5,6 +5,9 @@
 * @version		1.0 du 11/12/2014
 * @desc			Controleur des objets : accounts
 */
+use App\Utils;
+use App\AccountManager;
+use App\Pagination;
 
 require_once( "inc/prepend.php" );
 $user->isLoggedIn(); // Espace privé

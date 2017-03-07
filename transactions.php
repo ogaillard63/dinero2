@@ -5,6 +5,11 @@
 * @version		1.0 du 11/12/2014
 * @desc			Controleur des objets : transactions
 */
+use App\Utils;
+use App\TransactionManager;
+use App\CategoryManager;
+use App\AccountManager;
+use App\Pagination;
 
 require_once( "inc/prepend.php" );
 $user->isLoggedIn(); // Espace privé
