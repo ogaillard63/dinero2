@@ -1,4 +1,11 @@
 <?php
+/**
+* @project		Dinero
+* @author		Olivier Gaillard
+* @version		1.0 du 11/12/2014
+* @desc			Gestion des logs
+*/
+
 namespace App;
 use PDO;
 

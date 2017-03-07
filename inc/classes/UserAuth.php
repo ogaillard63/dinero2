@@ -1,14 +1,10 @@
 <?php
-
 /**
- * @project		WebApp Base
- *
- * @author		Olivier Gaillard <ogaillard63@gmail.com>
- * @version		1.0 du 13/03/2014
- * @desc	   	Authentification des users
- *
- **/
-
+* @project		Dinero
+* @author		Olivier Gaillard
+* @version		1.0 du 13/03/2014
+* @desc	   		Authentification des users
+**/
 namespace App;
 use PDO;
 

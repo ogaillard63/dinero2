@@ -1,11 +1,10 @@
 <?php
 /**
- * @project		WebApp Base
- *
- * @author		Olivier Gaillard <ogaillard63@gmail.com>
- * @version		1.0 du 13/03/2014
- * @desc	   	Gestion de l'identification des users
- */
+* @project		Dinero
+* @author		Olivier Gaillard
+* @version		1.0 du 13/03/2014
+* @desc	   	Gestion de l'identification des users
+*/
 
 require_once( "inc/prepend.php" );
 use App\Utils;

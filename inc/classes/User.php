@@ -1,11 +1,10 @@
 <?php
 /**
- * @project		Travel Planner
- *
- * @author		Olivier Gaillard <olivier.gaillard@centrefrance.com>
- * @version		1.0 du 18/04/2014
- * @desc	   	Objet User
- */
+* @project		Dinero
+* @author		Olivier Gaillard
+* @version		1.0 du 11/12/2014
+* @desc	   		Objet User
+*/
 namespace App;
 
 class User {

@@ -1,6 +1,6 @@
 <?php
 /**
-* @project		
+* @project		Dinero
 * @author		Olivier Gaillard
 * @version		1.0 du 01/12/2014
 * @desc			Gestion de la pagination

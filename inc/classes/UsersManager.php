@@ -1,11 +1,10 @@
 <?php
 /**
- * @project		Affichage dynamique
- *
- * @author		Olivier Gaillard <olivier.gaillard@centrefrance.com>
- * @version		1.1 du 27/04/2013
- * @desc	   	Gestion des users
- */
+* @project		Dinero
+* @author		Olivier Gaillard
+* @version		1.0 du 11/12/2014
+* @desc	   		Gestion des users
+*/
 
 namespace App;
 use PDO;
