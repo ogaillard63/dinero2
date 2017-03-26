@@ -29,7 +29,7 @@ $category_id	= Utils::get_input('category_id','post');
 $comment		= Utils::get_input('comment','post');
 $internal		= Utils::get_input('internal','post');
 $state			= Utils::get_input('state','post');
-$import	= Utils::get_input('import','post');
+$import			= Utils::get_input('import','post');
 $last_mod		= Utils::get_input('last_mod','post');
 $import			= Utils::get_input('import','post');
 
