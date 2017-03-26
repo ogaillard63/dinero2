@@ -54,7 +54,7 @@ try {
 	$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
 catch( PDOException $Exception ) {
-    throw new MyDatabaseException( $Exception->getMessage( ) , $Exception->getCode( ) );
+   throw new pdoDbException($Exception->getMessage( ) , $Exception->getCode( ));
 }
 
 // Log

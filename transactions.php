@@ -6,6 +6,7 @@
 * @desc			Controleur des objets : transactions
 */
 use App\Utils;
+use App\Transaction;
 use App\TransactionManager;
 use App\CategoryManager;
 use App\AccountManager;
